@@ -1,4 +1,4 @@
-﻿#include <string.h>
+#include <string.h>
 
 #include <psp2/gxm.h> 
 #include <psp2/appmgr.h>
@@ -14,7 +14,6 @@ static int color = 0xff00ff00;
 static void* bufferData[2];
 static int bufferIndex = 0;
 
-//
 int initGraphics()
 {
 	//Initialize GXM
@@ -46,7 +45,6 @@ int initGraphics()
 	return 0;
 }
 
-/*	Draw Display */
 int drawDisplay()
 {
 	//Get buffer state
