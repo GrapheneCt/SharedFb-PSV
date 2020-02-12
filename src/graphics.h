@@ -1,11 +1,11 @@
-﻿#define DISPLAY_WIDTH				960
+#define DISPLAY_WIDTH				960
 #define DISPLAY_HEIGHT				544
 #define DISPLAY_STRIDE_IN_PIXELS	960
 #define MAX_PENDING_SWAPS			1
 
 typedef struct SceSharedFbInfo { // size is 0x58
 	void* base1;		// cdram base
-	int unk_04;
+	int memsize;
 	void* base2;		// cdram base
 	int unk_0C;
 	void *unk_10;
@@ -22,7 +22,7 @@ typedef struct SceSharedFbInfo { // size is 0x58
 	int unk_3C;
 	int unk_40;
 	int unk_44;
-	int unk_48;
+	int vsync;
 	int unk_4C;
 	int unk_50;
 	int unk_54;
