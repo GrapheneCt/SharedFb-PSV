@@ -28,7 +28,7 @@ int initGraphics()
 	if (ret < 0)
 		color = 0xff000ff0;
 
-	//Wait for sharedfb to be ready
+	//Wait for sharedfb to be ready, get sharedfb info
 	while (1){
 	shfb_id = _sceSharedFbOpen(1, 0x03600000);
 	memset(&info, 0, sizeof(info));
@@ -39,7 +39,12 @@ int initGraphics()
 		break;
 	}
 
-	bufferData[0] = info.base1; //Additional cdram can be mapped using sceGxmMapMemory
+	//Map sharedfb memory
+	ret = sceGxmMapMemory(info.base1, info.memsize, 3); //memsize is 5MiB
+	if (ret < 0)
+		color = 0xff000ff0;
+
+	bufferData[0] = info.base1;
 	bufferData[1] = info.base2;
 
 	return 0;
@@ -47,9 +52,7 @@ int initGraphics()
 
 int drawDisplay()
 {
-	//Get buffer state
-	memset(&info, 0, sizeof(info));
-	sceSharedFbGetInfo(shfb_id, &info);
+	info.vsync = 1; //Set to 1 for 60FPS lock or to 0 for 30FPS lock
 
 	if (info.curbuf == 1)
 		bufferIndex = 0;
