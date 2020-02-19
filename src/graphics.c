@@ -70,8 +70,6 @@ int drawDisplay()
 	else
 		size = 0;
 
-	//Set new buffer
-	info.base2 = bufferData[bufferIndex];
 
 	sceSharedFbBegin(shfb_id, &info);
 	sceSharedFbEnd(shfb_id);
