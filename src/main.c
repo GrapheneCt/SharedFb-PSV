@@ -7,7 +7,7 @@ int main( void )
 	initGraphics();
 
 	while (1) {
-			drawDisplay();
+		drawDisplay();
 	}
 
 	return 0;
